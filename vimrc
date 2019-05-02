@@ -1,11 +1,15 @@
-" turn on file type based indentation, 4 space tabs, etc
-filetype indent on
-set nowrap
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set autoindent
+set nocompatible " don't force compatibility with vi
+filetype plugin indent on " filetype based indentation, if plugin exists for filetype load that too
+set nowrap " don't wrap long lines
+set tabstop=4 " tab spaces
+set shiftwidth=4 " indentation spaces
+set expandtab " expand tab into spaces
+set smartindent " indentation should be more filetype aware
+set autoindent " match indentation of above line
+set autoread " automatically read in outside changes
+set scrolloff=3 " start scrolling 3 lines before horizontal border
+set sidescrolloff=3 " same as above for vertical
+set encoding=utf-8
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -19,4 +23,5 @@ map <leader> :
 set hlsearch " highlight search matches
 set showmatch " highlight matching (, [, {
 set number " show line numbers
-set mouse=a " use mouse for selection, scrolling, etc
+set mouse=a " use mouse for selection, scrolling, eta
+set hidden " allow hidden buffers
