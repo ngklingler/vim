@@ -12,7 +12,7 @@ map <C-n> :NERDTreeToggle<CR>
 " use the mimimalist colorscheme found at https://github.com/dikiaap/minimalist
 set t_Co=256
 syntax on
-colorscheme onedark
+colorscheme minimalist
 
 set colorcolumn=80 " have a highlighted column for PEP8
 map <leader> :
