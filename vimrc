@@ -7,6 +7,8 @@ set expandtab
 set smartindent
 set autoindent
 
+map <C-n> :NERDTreeToggle<CR>
+
 " use the mimimalist colorscheme found at https://github.com/dikiaap/minimalist
 set t_Co=256
 syntax on

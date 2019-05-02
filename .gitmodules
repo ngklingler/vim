@@ -1,3 +1,6 @@
 [submodule "pack/plugins/opt/minimalist"]
-	path = pack/plugins/opt/minimalist
+	path = pack/plugins/start/minimalist
 	url = https://github.com/dikiaap/minimalist
+[submodule "pack/plugins/start/nerdtree"]
+	path = pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
