@@ -1,0 +1,3 @@
+[submodule "pack/plugins/opt/minimalist"]
+	path = pack/plugins/opt/minimalist
+	url = https://github.com/dikiaap/minimalist
