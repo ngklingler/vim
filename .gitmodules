@@ -1,4 +1,4 @@
-[submodule "pack/plugins/opt/minimalist"]
+[submodule "pack/plugins/start/minimalist"]
 	path = pack/plugins/start/minimalist
 	url = https://github.com/dikiaap/minimalist
 [submodule "pack/plugins/start/nerdtree"]
@@ -7,3 +7,6 @@
 [submodule "pack/plugins/start/vim-polyglot"]
 	path = pack/plugins/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "pack/plugins/start/vim-signify"]
+	path = pack/plugins/start/vim-signify
+	url = https://github.com/mhinz/vim-signify.git

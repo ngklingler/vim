@@ -11,8 +11,10 @@ set scrolloff=3 " start scrolling 3 lines before horizontal border
 set sidescrolloff=3 " same as above for vertical
 set encoding=utf-8
 
+"plugin settings
 map <C-n> :NERDTreeToggle<CR>
-
+let g:signify_vcs_list = ['git']
+let g:signify_realtime = 1
 " use the mimimalist colorscheme found at https://github.com/dikiaap/minimalist
 set t_Co=256
 syntax on
