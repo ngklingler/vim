@@ -10,8 +10,7 @@ set autoread " automatically read in outside changes
 set scrolloff=3 " start scrolling 3 lines before horizontal border
 set sidescrolloff=3 " same as above for vertical
 set encoding=utf-8
-:au FocusLost * wa " save everything on focus change
-set autowriteall " save on buffer change and other events
+autocmd BufLeave,FocusLost * silent! wall " autosave on buffer and focus change
 
 "plugin settings
 map <C-n> :NERDTreeToggle<CR>
