@@ -1,7 +1,7 @@
 :wq or :x to save and quit, :q! to quit disregarding changes
 :w FILE to save as FILE
 :!CMD to run CMD and see output
-:r FILE to dump contents of file at cursor, or :r !CMD for CMD output
+:r FILE/URL to dump contents of file at cursor, or :r !CMD for CMD output
 :help TOPIC for help on TOPIC
 Ctrl-D and <TAB> for command line completion
 

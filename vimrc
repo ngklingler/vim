@@ -22,6 +22,7 @@ colorscheme minimalist
 
 set colorcolumn=80 " have a highlighted column for PEP8
 map <leader> :
+map <leader><leader> :b#<CR>
 set hlsearch " highlight search matches
 set showmatch " highlight matching (, [, {
 set number " show line numbers
