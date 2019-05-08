@@ -29,3 +29,8 @@ set showmatch " highlight matching (, [, {
 set number " show line numbers
 set mouse=a " use mouse for selection, scrolling, eta
 set hidden " allow hidden buffers
+
+set foldmethod=indent
+autocmd BufWinEnter * silent! :%foldopen!
+" in normal mode, use q to toggle folds
+nmap q za
