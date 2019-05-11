@@ -16,10 +16,14 @@ autocmd BufLeave,FocusLost * silent! wall " autosave on buffer and focus change
 map <C-n> :NERDTreeToggle<CR>
 let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1
-" use the mimimalist colorscheme found at https://github.com/dikiaap/minimalist
-set t_Co=256
+" set colorscheme
+packadd! onedark.vim
+let g:onedark_hide_endofbuffer=1
+let g:onedark_termcolors=256
+" let g:onedark_terminal_italics=1
+autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
 syntax on
-colorscheme minimalist
+colorscheme onedark
 
 set colorcolumn=80 " have a highlighted column for PEP8
 map <leader> :
