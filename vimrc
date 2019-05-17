@@ -16,6 +16,7 @@ autocmd BufLeave,FocusLost * silent! wall " autosave on buffer and focus change
 map <C-n> :NERDTreeToggle<CR>
 let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1
+set signcolumn=yes " keep sign column open even if no git changes
 " set colorscheme
 packadd! onedark.vim
 let g:onedark_hide_endofbuffer=1
@@ -38,3 +39,7 @@ set foldmethod=indent
 autocmd BufWinEnter * silent! :%foldopen!
 " in normal mode, use q to toggle folds
 nmap q za
+" make backspace work in normal mode
+nmap <BS> X
+set backspace=indent,eol,start " backspace working in insert mode
+let g:python_highlight_all=1 " vim polyglot highlighting
