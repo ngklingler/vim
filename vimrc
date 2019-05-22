@@ -1,29 +1,23 @@
-set nocompatible " don't force compatibility with vi
-filetype plugin indent on " filetype based indentation, if plugin exists for filetype load that too
-set nowrap " don't wrap long lines
-set tabstop=4 " tab spaces
-set shiftwidth=4 " indentation spaces
-set expandtab " expand tab into spaces
-set smartindent " indentation should be more filetype aware
-set autoindent " match indentation of above line
-set autoread " automatically read in outside changes
-set scrolloff=3 " start scrolling 3 lines before horizontal border
-set sidescrolloff=3 " same as above for vertical
+set nocompatible  " Don't force compatibility with vi
+filetype plugin indent on  " Filetype based indentation, if plugin exists for filetype load that too
+set autoread  " Automatically read in outside changes
 set encoding=utf-8
-autocmd BufLeave,FocusLost * silent! wall " autosave on buffer and focus change
+autocmd BufLeave,FocusLost * silent! wall  " Autosave on buffer and focus change
+set listchars=tab:<·>,extends:$,precedes:$,space:·  " Characters to indicate whitespace
+set list  " Show whitespace
 
-"plugin settings
+" Plugin settings
 map <C-n> :NERDTreeToggle<CR>
 let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1
-set signcolumn=yes " keep sign column open even if no git changes
-" set colorscheme
+set signcolumn=yes  " Keep sign column open even if no git changes
+" Set colorscheme
 packadd! onedark.vim
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
 " let g:onedark_terminal_italics=1
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
-syntax on
+syntax on " enable syntax highlighting
 colorscheme onedark
 
 set colorcolumn=80 " have a highlighted column for PEP8
@@ -43,3 +37,8 @@ nmap q za
 nmap <BS> X
 set backspace=indent,eol,start " backspace working in insert mode
 let g:python_highlight_all=1 " vim polyglot highlighting
+
+" load all packages now
+packloadall
+" load all helptags in package docs
+silent! helptags ALL
