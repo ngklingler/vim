@@ -1,5 +1,5 @@
 set encoding=utf-8
-set list listchars=tab:<·>,extends:$,precedes:$,space:·  " Characters to indicate whitespace
+set list listchars=tab:!·,extends:$,precedes:$,space:·  " Characters to indicate whitespace
 set splitbelow splitright  " More sensible window splits
 set tabstop=4 shiftwidth=4 expandtab  " Tabs are 4 spaces
 set colorcolumn=80 " have a highlighted column for PEP8
@@ -10,7 +10,7 @@ set mouse=a " use mouse for selection, scrolling, eta
 set hidden " allow hidden buffers
 set hls ic is  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
-set guicursor=0  " So cursor is visible in insert mode
+set guicursor=  " So cursor is visible in insert mode
 
 " Plugin settings
 map <C-n> :NERDTreeToggle<CR>
@@ -52,13 +52,14 @@ function! CleverTab()
       return "\<C-N>"
    endif
 endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
+" Make tab select autocompletions if you are typing chars
+imap <Tab> <C-R>=CleverTab()<CR>
+" Enter selects and autocompletion if in the autocompletion menu
+imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Autocommands
 autocmd BufLeave,FocusLost * silent! wall  " Autosave on buffer and focus change
 autocmd BufWinEnter * silent! :%foldopen!  " Open all folds on buffer and window open
-au InsertEnter * silent execute "!echo -en \<esc>[5 q"
-au InsertLeave * silent execute "!echo -en \<esc>[5 q"
 
 " load all packages now
 packloadall
