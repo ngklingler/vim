@@ -1,6 +1,3 @@
-set nocompatible  " Don't force compatibility with vi
-filetype plugin indent on  " Filetype based indentation, if plugin exists for filetype load that too
-set autoread  " Automatically read in outside changes
 set encoding=utf-8
 set list listchars=tab:<·>,extends:$,precedes:$,space:·  " Characters to indicate whitespace
 set splitbelow splitright  " More sensible window splits
@@ -11,10 +8,9 @@ set showmatch " highlight matching (, [, {
 set number " show line numbers
 set mouse=a " use mouse for selection, scrolling, eta
 set hidden " allow hidden buffers
-set ruler  " Show cursor position in bottom right status bar
 set hls ic is  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
-set backspace=indent,eol,start " backspace working in insert mode
+set guicursor=0  " So cursor is visible in insert mode
 
 " Plugin settings
 map <C-n> :NERDTreeToggle<CR>
@@ -30,6 +26,11 @@ let g:onedark_termcolors=256
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
 syntax on " enable syntax highlighting
 colorscheme onedark
+let g:deoplete#enable_at_startup = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['~/.local/bin/pyls']
+    \ }
 
 " Key mappings
 " Map \ to : in normal mode (more ergonomic)
@@ -44,10 +45,20 @@ nmap <BS> X
 nmap = <C-w><C-w>
 " Make <Esc><Esc> clear search highlights
 nmap <silent> <Esc><Esc> <Esc>:noh<CR><Esc>
+function! CleverTab()
+   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+      return "\<Tab>"
+   else
+      return "\<C-N>"
+   endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " Autocommands
 autocmd BufLeave,FocusLost * silent! wall  " Autosave on buffer and focus change
 autocmd BufWinEnter * silent! :%foldopen!  " Open all folds on buffer and window open
+au InsertEnter * silent execute "!echo -en \<esc>[5 q"
+au InsertLeave * silent execute "!echo -en \<esc>[5 q"
 
 " load all packages now
 packloadall
