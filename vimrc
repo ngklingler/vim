@@ -10,7 +10,21 @@ set mouse=a " use mouse for selection, scrolling, eta
 set hidden " allow hidden buffers
 set hls ic is  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
-set guicursor=  " So cursor is visible in insert mode
+
+" Things that are specific to nvim vs vim
+if has("nvim")
+    " TODO move deoplete to optional and load here, or maybe this does it
+    let g:deoplete#enable_at_startup = 1
+    set guicursor=  " So cursor is visible (block) in insert mode
+else
+    " Things that nvim has by default
+    set nocompatible  " Don't force vi compatibility
+    filetype plugin indent on  " filetype based indentation, if plugin exists for filetype load it
+    set smartindent  " Indentation should be more filetype aware
+    set autoindent  " Match indentation of above line
+    set autoread  " Read in outside changes to file
+    syntax on  " Enable syntax highlighting
+endif
 
 " Plugin settings
 map <C-n> :NERDTreeToggle<CR>
@@ -26,7 +40,6 @@ let g:onedark_termcolors=256
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
 syntax on " enable syntax highlighting
 colorscheme onedark
-let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'python': ['~/.local/bin/pyls']
