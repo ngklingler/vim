@@ -23,6 +23,7 @@ deletions:
     combine d with jump to delete sections (dw to delete word for example)
 
 jumping:
+    fCHAR to jump to CHAR, F to go back, t to go just until, T to go back just until
     :N or N then Shift-g to jump to line N
     gg to first line, G to last line
     0 to start of line, $ to end, ^ to first text
@@ -41,6 +42,7 @@ yank and put:
     p to put yank or last deletion
 
 find and replace:
+    * to search for word under cursor
     / to search forward, ? to search backwards
     :set ic to ignore case, :set noic to consider case
     :set is to search as you type, :set nois to turn off
