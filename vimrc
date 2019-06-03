@@ -38,7 +38,6 @@ let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
 " let g:onedark_terminal_italics=1
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
-syntax on " enable syntax highlighting
 colorscheme onedark
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
@@ -50,8 +49,8 @@ let g:LanguageClient_useVirtualText = 0
 " Key mappings
 " Map \ to : in normal mode (more ergonomic)
 map <leader> :
-" Map \\ to switch to last buffer (should I make this next buffer instead)
-map <leader><leader> :b#<CR>
+" Map \\ to cycle through buffers (used to be :b#<CR> for last buffer)
+map <leader><leader> :bn<CR>
 " Toggle folds with q in normal mode
 nmap q za
 " Make backspace work in normal mode
