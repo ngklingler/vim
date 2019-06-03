@@ -6,7 +6,7 @@ set colorcolumn=80 " have a highlighted column for PEP8
 set nowrap  " Don't wrap long lines
 set showmatch " highlight matching (, [, {
 set number " show line numbers
-set mouse=a " use mouse for selection, scrolling, eta
+" set mouse=a " use mouse for selection, scrolling, eta
 set hidden " allow hidden buffers
 set hls ic is  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
@@ -44,6 +44,8 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'python': ['~/.local/bin/pyls']
     \ }
+" make it so error messages are not shown inline on screen
+let g:LanguageClient_useVirtualText = 0
 
 " Key mappings
 " Map \ to : in normal mode (more ergonomic)
