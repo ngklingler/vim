@@ -45,6 +45,8 @@ let g:LanguageClient_serverCommands = {
     \ }
 " make it so error messages are not shown inline on screen
 let g:LanguageClient_useVirtualText = 0
+" make it so completions don't open a preview window
+set completeopt-=preview
 
 " Key mappings
 " Map \ to : in normal mode (more ergonomic)
