@@ -62,6 +62,7 @@ windows:
     C-w c to close current window
     C-w o to close all but current window
     :new to split horizontal, :vnew for vertical
+    :vert sb N to open buffer N in new vertical window
 
 buffers:
     :set hidden for hidden buffers
