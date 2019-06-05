@@ -63,16 +63,9 @@ nmap <BS> X
 nmap = <C-w><C-w>
 " Make <Esc><Esc> clear search highlights
 nmap <silent> <Esc><Esc> <Esc>:noh<CR><Esc>
-function! CleverTab()
-   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-      return "\<Tab>"
-   else
-      return "\<C-N>"
-   endif
-endfunction
-" Make tab select autocompletions if you are typing chars
-imap <Tab> <C-R>=CleverTab()<CR>
-" Enter selects and autocompletion if in the autocompletion menu
+" Tab cycles through autocompletions if the autocompletion menu is open
+imap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" Enter selects an autocompletion if in the autocompletion menu
 imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Autocommands
