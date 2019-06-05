@@ -6,9 +6,10 @@ set colorcolumn=80 " have a highlighted column for PEP8
 set nowrap  " Don't wrap long lines
 set showmatch " highlight matching (, [, {
 set number " show line numbers
+set noswapfile  " Disable swap files
 set mouse=a " use mouse for selection, scrolling, eta
 set hidden " allow hidden buffers
-set hls ic is  " Highlight search results, ignore case on searches, search as you type
+set hls ic is smartcase  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
 
 " Things that are specific to nvim vs vim
@@ -27,7 +28,8 @@ else
 endif
 
 " Plugin settings
-map <C-n> :NERDTreeToggle<CR>
+let g:netrw_dirhistmax = 0  " Stop netrw from saving a history file, below toggles netrw
+map <C-n> :Lexplore<CR>
 " Signify: version control gutter, use git, update realtime
 let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1

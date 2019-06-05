@@ -20,6 +20,7 @@ changing/manipulating text:
     x to delete char, X to delete backwards
     dd to delete line, D to delete to EOL
     dMOTION to delete over MOTION
+    . repeats the last insert, change, deletion
 
 jumping:
     fCHAR to jump to CHAR, F to go back, t to go just until, T to go back just until
