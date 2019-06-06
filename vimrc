@@ -12,10 +12,27 @@ set hidden " allow hidden buffers
 set hls ic is smartcase  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
 
+call plug#begin()
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+    " TODO deoplete dependency: `pip[3] install --user --upgrade pynvim
+    let g:deoplete#enable_at_startup = 1
+    
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+    Plug 'sheerun/vim-polyglot'
+    Plug 'joshdick/onedark.vim'
+call plug#end()
+
 " Things that are specific to nvim vs vim
 if has("nvim")
-    " TODO move deoplete to optional and load here, or maybe this does it
-    let g:deoplete#enable_at_startup = 1
     set guicursor=  " So cursor is visible (block) in insert mode
 else
     " Things that nvim has by default
@@ -35,10 +52,8 @@ let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1
 set signcolumn=yes  " Keep sign column open even if no git changes
 " Set colorscheme to onedark, hide end of buffer ~, use 256 colors
-packadd! onedark.vim
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
-" let g:onedark_terminal_italics=1
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
 colorscheme onedark
 let g:LanguageClient_serverCommands = {
