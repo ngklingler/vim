@@ -91,8 +91,7 @@ imap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Autocommands
-autocmd BufLeave,FocusLost * silent! wall  " Autosave on buffer and focus change
-autocmd BufWinEnter * silent! :%foldopen!  " Open all folds on buffer and window open
+set foldlevel=99  " This may keep folds open, even new folds when editing
 
 " load all packages now
 packloadall
