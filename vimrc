@@ -12,6 +12,13 @@ set hidden " allow hidden buffers
 set hls ic is smartcase  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
 
+" https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
     if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -22,7 +29,8 @@ call plug#begin()
     endif
     " TODO deoplete dependency: `pip[3] install --user --upgrade pynvim
     let g:deoplete#enable_at_startup = 1
-    
+
+    " TODO this depends on rust and rustup default stable
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
@@ -37,11 +45,9 @@ if has("nvim")
 else
     " Things that nvim has by default
     set nocompatible  " Don't force vi compatibility
-    filetype plugin indent on  " filetype based indentation, if plugin exists for filetype load it
     set smartindent  " Indentation should be more filetype aware
     set autoindent  " Match indentation of above line
     set autoread  " Read in outside changes to file
-    syntax on  " Enable syntax highlighting
 endif
 
 " Plugin settings
@@ -56,6 +62,7 @@ let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
 colorscheme onedark
+" TODO Dependencies need to be installed
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'python': ['~/.local/bin/pyls']
