@@ -37,6 +37,7 @@ call plug#begin()
         \ }
     Plug 'sheerun/vim-polyglot'
     Plug 'joshdick/onedark.vim'
+    Plug 'mhinz/vim-signify'
 call plug#end()
 
 " Things that are specific to nvim vs vim
@@ -53,12 +54,11 @@ endif
 " Plugin settings
 let g:netrw_dirhistmax = 0  " Stop netrw from saving a history file, below toggles netrw
 map <C-n> :Lexplore<CR>
-" Signify: version control gutter, use git, update realtime
+" Signify settings: version control gutter, use git, update realtime
 let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1
 set signcolumn=yes  " Keep sign column open even if no git changes
 " Set colorscheme to onedark, hide end of buffer ~, use 256 colors
-let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
 colorscheme onedark
