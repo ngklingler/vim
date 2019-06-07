@@ -11,6 +11,19 @@ set mouse=a " use mouse for selection, scrolling, eta
 set hidden " allow hidden buffers
 set hls ic is smartcase  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
+set foldlevel=99  " Open all folds
+
+" Things that are specific to nvim vs vim
+if has("nvim")
+    set guicursor=  " So cursor is visible (block) in insert mode
+else
+    " Things that nvim has by default
+    set nocompatible  " Don't force vi compatibility
+    set smartindent  " Indentation should be more filetype aware
+    set autoindent  " Match indentation of above line
+    set autoread  " Read in outside changes to file
+endif
+
 
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -40,25 +53,11 @@ call plug#begin()
     Plug 'mhinz/vim-signify'
 call plug#end()
 
-" Things that are specific to nvim vs vim
-if has("nvim")
-    set guicursor=  " So cursor is visible (block) in insert mode
-else
-    " Things that nvim has by default
-    set nocompatible  " Don't force vi compatibility
-    set smartindent  " Indentation should be more filetype aware
-    set autoindent  " Match indentation of above line
-    set autoread  " Read in outside changes to file
-endif
-
 " Plugin settings
 let g:netrw_dirhistmax = 0  " Stop netrw from saving a history file, below toggles netrw
-map <C-n> :Lexplore<CR>
-" Signify settings: version control gutter, use git, update realtime
 let g:signify_vcs_list = ['git']
 let g:signify_realtime = 1
 set signcolumn=yes  " Keep sign column open even if no git changes
-" Set colorscheme to onedark, hide end of buffer ~, use 256 colors
 let g:onedark_termcolors=256
 autocmd ColorScheme * call onedark#extend_highlight("Normal", { "bg": { "cterm": 232, "gui": "#080808", "cterm16": 0 } })
 colorscheme onedark
@@ -67,10 +66,8 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'python': ['~/.local/bin/pyls']
     \ }
-" make it so error messages are not shown inline on screen
-let g:LanguageClient_useVirtualText = 0
-" make it so completions don't open a preview window
-set completeopt-=preview
+let g:LanguageClient_useVirtualText = 0  " Make it so error messages are not shown inline on screen
+set completeopt-=preview  " Make it so completions don't open a preview window
 
 " Key mappings
 " Map \ to : in normal mode (more ergonomic)
@@ -89,11 +86,8 @@ nmap <silent> <Esc><Esc> <Esc>:noh<CR><Esc>
 imap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " Enter selects an autocompletion if in the autocompletion menu
 imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" C-n Toggles netrw in normal
+map <C-n> :Lexplore<CR>
 
-" Autocommands
-set foldlevel=99  " This may keep folds open, even new folds when editing
-
-" load all packages now
-packloadall
-" load all helptags in package docs
-silent! helptags ALL
+packloadall  " Load all packages now
+silent! helptags ALL  " Load all helptags in package docs
