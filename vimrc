@@ -72,13 +72,13 @@ set completeopt-=preview  " Make it so completions don't open a preview window
 " Key mappings
 " Map \ to : in normal mode (more ergonomic)
 map <leader> :
-" Map \\ to cycle through buffers (used to be :b#<CR> for last buffer)
+" Map \\ to cycle through buffers
 map <leader><leader> :bn<CR>
 " Toggle folds with q in normal mode
 nmap q za
 " Make backspace work in normal mode
 nmap <BS> X
-" Set = to switch windows in normal mode
+" Set = to cycle windows in normal mode
 nmap = <C-w><C-w>
 " Make <Esc><Esc> clear search highlights
 nmap <silent> <Esc><Esc> <Esc>:noh<CR><Esc>
