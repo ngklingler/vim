@@ -70,16 +70,18 @@ let g:LanguageClient_useVirtualText = 0  " Make it so error messages are not sho
 set completeopt-=preview  " Make it so completions don't open a preview window
 
 " Key mappings
-" Map \ to : in normal mode (more ergonomic)
-map <leader> :
-" Map \\ to cycle through buffers
-map <leader><leader> :bn<CR>
+" Set leader
+let mapleader="`"
+" Map ` to : in normal mode (more ergonomic)
+nmap <leader> :
+" Map `` to cycle through buffers
+nmap <leader><leader> :bn<CR>
+" Set `= to cycle windows in normal mode
+nmap <leader>= <C-w><C-w>
 " Toggle folds with q in normal mode
 nmap q za
 " Make backspace work in normal mode
 nmap <BS> X
-" Set = to cycle windows in normal mode
-nmap = <C-w><C-w>
 " Make <Esc><Esc> clear search highlights
 nmap <silent> <Esc><Esc> <Esc>:noh<CR><Esc>
 " Tab cycles through autocompletions if the autocompletion menu is open
