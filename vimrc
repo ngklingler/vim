@@ -12,15 +12,16 @@ set hidden " allow hidden buffers
 set hls ic is smartcase  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
 set foldlevel=99  " Open all folds
+set cursorline  " Highlight row with cursor
+set fileformat=unix  " newline line endings
 
 " Things that are specific to nvim vs vim
 if has("nvim")
     set guicursor=  " So cursor is visible (block) in insert mode
 else
     " Things that nvim has by default
-    set nocompatible  " Don't force vi compatibility
-    set smartindent  " Indentation should be more filetype aware
     set autoindent  " Match indentation of above line
+    filetype plugin indent on
     set autoread  " Read in outside changes to file
 endif
 
