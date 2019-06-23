@@ -12,7 +12,6 @@ set hidden " allow hidden buffers
 set hls ic is smartcase  " Highlight search results, ignore case on searches, search as you type
 set foldmethod=indent  " Fold lines on same indent
 set foldlevel=99  " Open all folds
-set cursorline  " Highlight row with cursor
 set fileformat=unix  " newline line endings
 
 " Things that are specific to nvim vs vim
