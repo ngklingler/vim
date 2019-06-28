@@ -90,6 +90,14 @@ imap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " C-n Toggles netrw in normal
 map <C-n> :Lexplore<CR>
-
+" autoclose (), {}, []
+imap ( ()<left>
+imap [ []<left>
+imap { {}<left>
+imap ' ''<left>
+imap " ""<left>
+imap (<CR> (<CR>)<ESC>O
+imap {<CR> {<CR>}<ESC>O
+imap [<CR> [<CR>]<ESC>O
 packloadall  " Load all packages now
 silent! helptags ALL  " Load all helptags in package docs
