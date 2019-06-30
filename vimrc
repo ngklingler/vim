@@ -94,8 +94,6 @@ map <C-n> :Lexplore<CR>
 imap ( ()<left>
 imap [ []<left>
 imap { {}<left>
-imap ' ''<left>
-imap " ""<left>
 imap (<CR> (<CR>)<ESC>O
 imap {<CR> {<CR>}<ESC>O
 imap [<CR> [<CR>]<ESC>O
